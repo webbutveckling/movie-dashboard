@@ -31,3 +31,40 @@ function getMovieRating(name /* LOTR */, foralder) {
     })
     .catch((error) => console.error(error));
 }
+
+// Ladda bakgrundsfärgen från local storage vid sidladdning
+function loadBrowserPreferences() {
+
+    document.getElementById("option1").setAttribute("checked","true");
+    document.body.style.fontFamily = "Arial";
+
+    
+    const savedColor = localStorage.getItem('bakgrundsfarg');
+    if (savedColor) {
+        document.body.style.backgroundColor = savedColor;
+        
+        if (savedColor == "black") {
+            document.getElementById("option3").setAttribute("checked","true");
+        } else if (savedColor == "white") {
+            document.getElementById("option2").setAttribute("checked","true");
+        } else if (savedColor == "orange") {
+            document.getElementById("option4").setAttribute("checked","true");
+            document.body.style.fontFamily = "creepster";
+        }
+    }
+
+
+};
+
+// Funktion för att spara vald färg i local storage
+function saveBrowserPreferences() {
+    const color = document.querySelector('input[name="tema"]:checked').value;
+    //const color = document.getElementById('colorPicker').value;
+    document.body.style.backgroundColor = color;
+    if (color == "orange") {
+        document.body.style.fontFamily = "creepster";
+    } else {
+        document.body.style.fontFamily = "Arial";
+    }
+    localStorage.setItem('bakgrundsfarg', color);
+}

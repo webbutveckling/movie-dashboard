@@ -1,3 +1,14 @@
 img {
     width:150px;
 }
+
+.container {
+    min-height:83vh;
+}
+
+footer {
+    width:100vw;
+    overflow: hidden;
+    background-color:#f0f0f0;
+    border-radius: 20px;
+}
